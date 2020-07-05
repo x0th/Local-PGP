@@ -1,0 +1,84 @@
+body {
+  min-width: 250px;
+  background-color: #232931;
+}
+
+button {
+  background-color: #232931;
+  border: 1px solid #21bf73;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+button:hover {
+  background-color: #21bf73;
+}
+
+textarea, input[type=text], select, option {
+  background-color: #232931;
+  color: white;
+  padding-bottom: 5px;
+  border: 1px solid white;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+textarea {
+  min-height: 70px;
+}
+
+label, p {
+  color: white;
+}
+
+#log-output1, #log-output2 {
+  font-size: 125%;
+}
+
+#store-button, #add-keys, #delete-key {
+  margin-bottom: 40px;
+}
+
+#me {
+  width: 100%;
+}
+
+.tabs {
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.tablinks {
+  width: 50%;
+  float: left;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+}
+
+.copy-area {
+  position: relative;
+  min-height: 70px;
+}
+
+.copy-area textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.copy-area button {
+  position: absolute;
+  bottom: -13px;
+  left: 0;
+  border: 1px solid white;
+  border-radius: 0px;
+  font-size: 90%;
+}

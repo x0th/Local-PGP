@@ -1,0 +1,170 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <link rel="stylesheet" href="popup.css">
+    </head>
+    <body>
+      <div class="tabs">
+        <button id="me">My Keys</button>
+        <button class="tablinks" id="encrypt-tab-button">Encrypt</button>
+        <button class="tablinks" id="decrypt-tab-button">Decrypt</button>
+      </div>
+
+      <div id="empty" class="tabcontent">
+      </div>
+
+      <!-- User tab and subtabs start -->
+
+      <div id="user-none" class="tabcontent">
+        <p id="log-output1">No keys stored</p>
+        <button id="generate-keys">Generate new</button>
+        <button id="enter-keys">Enter existing</button> 
+        <br>
+        <button id="options-none">Options</button>
+      </div>
+
+      <div id="user-generate" class="tabcontent">
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="(not required)">
+        <label for="passphrase">Passphrase:</label>
+        <input type="text" id="passphrase">
+        <button id="generate">Generate</button>
+        <br>
+        <div class="copy-area">
+          <label for="privateKey">Private key:</label>
+          <br>
+          <textarea id="privateKey"></textarea>
+          <button id="privateKey-copy">Copy</button>
+        </div>
+        <br>
+        <div class="copy-area">
+          <label for="privateKey">Public key:</label>
+          <br>
+          <textarea id="publicKey"></textarea>
+          <button id="publicKey-copy">Copy</button>
+        </div>
+      </div>
+
+      <div id="user-enter" class="tabcontent">
+        <label for="name-enter">Name:</label>
+        <input type="text" id="name-enter">
+        <label for="email-enter">Email:</label>
+        <input type="text" id="email-enter" placeholder="(not required)">
+        <label for="passphrase-enter">Passphrase:</label>
+        <input type="text" id="passphrase-enter">
+        <br>
+        <label for="privateKey-enter">Private key:</label>
+        <br>
+        <textarea id="privateKey-enter"></textarea>
+        <br>
+        <label for="privateKey-enter">Public key:</label>
+        <br>
+        <textarea id="publicKey-enter"></textarea>
+        <br>
+        <button id="creds">Save credentials</button>
+      </div>
+
+      <div id="user-main" class="tabcontent">
+        <p id="log-output2">Local user keys stored</p>
+        <button id="user-info">Show my info</button>
+        <button id="delete-user">Delete my info</button>
+        <br>
+        <button id="options-main">Options</button>
+      </div>
+
+      <div id="user-pass" class="tabcontent">
+        <label for="pass-text">Enter your passphrase</label>
+        <input type="text" id="pass-text">
+        <button id="get-pass">Submit</button>
+      </div>
+
+      <div id="user-info-tab" class="tabcontent">
+        <label for="name-info">Name:</label>
+        <input type="text" id="name-info">
+        <label for="email-info">Email:</label>
+        <input type="text" id="email-info">
+        <br>
+        <div class="copy-area">
+          <label for="privateKey-info">Private key:</label>
+          <br>
+          <textarea id="privateKey-info"></textarea>
+          <button id="privateKey-info-copy">Copy</button>
+        </div>
+        <br>
+        <div class="copy-area">
+          <label for="privateKey-info">Public key:</label>
+          <br>
+          <textarea id="publicKey-info"></textarea>
+          <button id="publicKey-info-copy">Copy</button>
+        </div>
+        <br>
+        <button id="download-info">Download credentials</button>
+      </div>
+
+      <!-- User tab and subtabs end -->
+
+      <!-- Encrypt tab and subtabs start -->
+
+      <div id="encrypt-tab" class="tabcontent">
+        <div class="copy-area">
+          <textarea id="encrypt-message" placeholder="Enter message to encrypt..."></textarea>
+          <button id="encrypt-message-copy">Copy</button>
+        </div>
+        <br>
+        <label for="public-keys-use">Select public key to encrypt with:</label>
+        <select name="public-keys-use" id="public-keys-use">
+        </select>
+        <div id="add-keys">
+          <label for="keys">Key not in list?</label>
+          <button id="keys">Add</button>
+        </div>
+        <button id="encrypt">Encrypt</button>
+      </div>
+
+      <div id="store-keys" class="tabcontent">
+        <label for="store-name">Name:</label>
+        <input type="text" id="store-name">
+        <br>
+        <label for="store-key">Public key:</label>
+        <textarea id="store-key"></textarea>
+        <br>
+        <button id="store-button">Store Key</button>
+        <br>
+        <button id="keys-main-button">View Stored Keys</button>
+      </div>
+
+      <div id="keys-main" class="tabcontent">
+        <select name="public-keys-show" id="public-keys-show">
+          <option value="" selected disabled hidden>Select key</option>
+        </select>
+        <div class="copy-area">
+          <textarea id="lookupKey"></textarea>
+          <button id="lookupKey-copy">Copy</button>
+        </div>
+        <br>
+        <button id="delete-key">Delete public key</button>
+        <br>
+        <button id="export-public">Export stored keys</button>
+      </div>
+
+      <!-- Encrypt tab and subtabs end -->
+
+      <!-- Decrypt tab start -->
+
+      <div id="decrypt-tab" class="tabcontent">
+        <div class="copy-area">
+          <textarea id="decrypt-message" placeholder="Enter message to decrypt..."></textarea>
+          <button id="decrypt-message-copy">Copy</button>
+        </div>
+        <br>
+        <button id="decrypt">Decrypt</button>
+      </div>
+
+      <!-- Decrypt tab end -->
+
+      <script src="../openpgp.min.js"></script>
+      <script src="popup.js"></script>
+    </body>
+  </html>

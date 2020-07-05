@@ -1,0 +1,8 @@
+body {
+  background-color: #232931;
+  color: white;
+}
+
+#delete-user-container, #delete-public-container {
+    margin-left: 10px;
+}
