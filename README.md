@@ -1,6 +1,6 @@
 # Local PGP Browser support
 
-Install: Chrome
+Install: [Chrome](https://chrome.google.com/webstore/detail/local-pgp-browser-encrypt/hlcbdlnnolgaenfoddgdlmgjflcapbba)
 
 The extension uses [OpenPGP.js](https://openpgpjs.org/) for everything associated with cryptography.
 
@@ -35,4 +35,4 @@ Just store a public key that was given to you by going to *Encrypt -> Add*. Afte
 
 ### Searching for options?
 
-You can find them in *My Keys -> Options*. There, you can enable/disable storage of your PGP keys and 'adress book' during every session.
+You can find them in *My Keys -> Options*. There, you can enable/disable storage of your PGP keys and 'address book' during every session.

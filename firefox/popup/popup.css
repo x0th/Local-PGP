@@ -1,5 +1,5 @@
 body {
-  min-width: 250px;
+  min-width: 320px;
   background-color: #232931;
 }
 
@@ -75,7 +75,7 @@ label, p {
 
 .copy-area button {
   position: absolute;
-  bottom: -13px;
+  bottom: -18px;
   left: 0;
   border: 1px solid white;
   border-radius: 0px;
