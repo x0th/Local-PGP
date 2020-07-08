@@ -1,6 +1,6 @@
 # Local PGP Browser support
 
-Install: [Chrome](https://chrome.google.com/webstore/detail/local-pgp-browser-encrypt/hlcbdlnnolgaenfoddgdlmgjflcapbba)
+Install: [Chrome](https://chrome.google.com/webstore/detail/local-pgp-browser-encrypt/hlcbdlnnolgaenfoddgdlmgjflcapbba), [Firefox](https://addons.mozilla.org/addon/local-pgp/)
 
 The extension uses [OpenPGP.js](https://openpgpjs.org/) for everything associated with cryptography.
 
