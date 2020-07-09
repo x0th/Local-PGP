@@ -1,8 +1,20 @@
 body {
   background-color: #232931;
   color: white;
+  min-width: 300px;
 }
 
 #delete-user-container, #delete-public-container {
     margin-left: 10px;
+}
+
+#stored {
+	margin-bottom: 50px;
+}
+
+.contain {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	border: 1px solid white;
 }

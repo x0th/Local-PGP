@@ -5,6 +5,13 @@ const deleteAllContainer = document.getElementById('delete-all-container');
 const deleteUserContainer = document.getElementById('delete-user-container');
 const deletePublicContainer = document.getElementById('delete-public-container');
 
+const sendToPopup = document.getElementById('send-to-popup');
+const copyText = document.getElementById('copy-text');
+const desktopNotification = document.getElementById('desktop-notification');
+const sendToPopupContainer = document.getElementById('send-to-popup-container');
+const copyTextContainer = document.getElementById('copy-text-container');
+const desktopNotificationContainer = document.getElementById('desktop-notification-container');
+
 function setClicks(option) {
 	switch(option) {
 		case 1:
@@ -53,8 +60,22 @@ function deleteParameters(option) {
 	chrome.storage.local.set({ "deleteStored": option });
 }
 
+function setContextMenus(option) {
+	chrome.storage.local.get({ "contextMenus": [true, false, false] }, function(result) {
+		var contextMenus = result.contextMenus;
+		if(option == 0)
+			contextMenus[option] = sendToPopup.checked;
+		else if(option == 1)
+			contextMenus[option] = copyText.checked;
+		else if(option == 2)
+			contextMenus[option] = desktopNotification.checked;
+
+		chrome.storage.local.set({ contextMenus: contextMenus });
+	});
+}
+
 function defaultChecks() {
-	chrome.storage.local.get({ "deleteStored": 0 }, function(result) {
+	chrome.storage.local.get({ "deleteStored": 0, "contextMenus": [true, false, false] }, function(result) {
 		switch(result.deleteStored) {
 			case 1:
 				deleteAll.checked = true;
@@ -70,12 +91,24 @@ function defaultChecks() {
 			default:
 				break;
 		}
+
+		if(result.contextMenus[0])
+			sendToPopup.checked = true;
+		if(result.contextMenus[1])
+			copyText.checked = true;
+		if(result.contextMenus[2])
+			desktopNotification.checked = true;
 	});
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
 	defaultChecks();
-	document.getElementById('delete-all-container').addEventListener('click', function() { setClicks(1); });
-	document.getElementById('delete-user-container').addEventListener('click', function() { setClicks(2); });
-	document.getElementById('delete-public-container').addEventListener('click', function() { setClicks(3); });
+	deleteAllContainer.addEventListener('click', function() { setClicks(1); });
+	deleteUserContainer.addEventListener('click', function() { setClicks(2); });
+	deletePublicContainer.addEventListener('click', function() { setClicks(3); });
+
+	sendToPopupContainer.addEventListener('click', function() { setContextMenus(0); });
+	copyTextContainer.addEventListener('click', function() { setContextMenus(1); });
+	desktopNotificationContainer.addEventListener('click', function() { setContextMenus(2); })
 });

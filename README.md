@@ -12,6 +12,7 @@ Note: **The extension's security is limited by it being local and browser-operat
 * You can store your PGP keys directly in-browser for the purpose of decryption.
 * If you do not have PGP keys, you can generate them in the extension. **Remember to also store them elsewhere for backup**.
 * You can keep an 'address book' of known public keys for encryption purposes.
+* Want to decrypt a message fast? After selecting an encrypted PGP message, right-click anywhere on the page and choose *Decrypt* to decrypt instantly! Feature customizable in settings.
 * Don't like such information being stored in a browser? You can tweak storage settings in the extension options.
 * Want to export your key databases? You can download them in a comfortable .json format.
 

@@ -64,7 +64,6 @@ function addPublicKey() {
 */
 function selectView() {
 	chrome.storage.local.get({ "name": null }, function(result) {
-		console.log(result.name);
 		if(result.name == null)
 			changeTab('user-none');
 		else
@@ -89,10 +88,8 @@ function populateInfo() {
 */
 function redirectPass() {
 	chrome.storage.local.get({ passphrase: null }, function (result) {
-		console.log(result.passphrase);
 		if(result.passphrase == document.getElementById('pass-text').value) {
 			document.getElementById('pass-text').value = '';
-			console.log(redirectOption);
 			if(redirectOption) {
 				populateInfo();
 				changeTab('user-info-tab');
@@ -201,7 +198,6 @@ async function generateKey() {
 
 	document.getElementById('privateKey').value = privateKeyArmored;
 	document.getElementById('publicKey').value = publicKeyArmored;
-//  console.log(revocationCertificate);
 }
 
 /*
@@ -237,12 +233,10 @@ function deletePublicKey() {
 function encryptMessage() {
 	chrome.storage.local.get(['publicKeys'], async function(result) {
 		var publicKeys = result.publicKeys;
-		console.log(publicKeys);
 		for(var i = 0; i < publicKeys.length; i++) {
 			var name = publicKeys[i].name;
 			if(name === keyListUse.value) {
 				var key = publicKeys[i].key;
-		console.log(key);
 		const { data: encrypted } = await openpgp.encrypt({
 			message: openpgp.message.fromText(document.getElementById('encrypt-message').value),
 			publicKeys: (await openpgp.key.readArmored(key)).keys,
@@ -260,7 +254,6 @@ function decryptMessage() {
 		var myPublicKey = result.myPublicKey;
 		var myPrivateKey = result.myPrivateKey;
 		var passphrase = result.passphrase;
-		console.log(`${myPrivateKey}\n${myPublicKey}\n${passphrase}`);
 		const { keys: [privateKey] } = await openpgp.key.readArmored(myPrivateKey);
 		await privateKey.decrypt(passphrase);
 
@@ -275,7 +268,12 @@ function decryptMessage() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	chrome.runtime.connect();
+	var port = chrome.runtime.connect();
+	port.onMessage.addListener(function(msg) {
+		changeTab('decrypt-tab');
+		document.getElementById('decrypt-message').value = msg.message;
+		port.postMessage({ seen: true });
+	});
 
 	document.getElementById('store-button').addEventListener('click', addPublicKey);
 	document.getElementById('creds').addEventListener('click', addExistingCreds);

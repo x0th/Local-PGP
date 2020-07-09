@@ -4,21 +4,43 @@
       <link rel="stylesheet" href="options.css">
     </head>
     <body>
-    	<h3>Choose what to do with stored information when popup is closed:</h2>
-    	<div id="delete-all-container">
-    		<label for="delete-all">Delete all information</label>
-    		<input type="checkbox" id="delete-all">
-    	</div>
+        <div id="stored" class="contain">
+            <h3>Choose what to do with stored information when popup is closed:</h3>
 
-    	<div id="delete-user-container">
-    		<label for="delete-user">Only delete local user credentials</label>
-    		<input type="checkbox" id="delete-user">
-    	</div>
+            <div id="delete-all-container">
+                <label for="delete-all">Delete all information</label>
+                <input type="checkbox" id="delete-all">
+            </div>
 
-    	<div id="delete-public-container">
-	    	<label for="delete-public">Only delete public keys database</label>
-	    	<input type="checkbox" id="delete-public">
-	    </div>
+            <div id="delete-user-container">
+                <label for="delete-user">Only delete local user credentials</label>
+                <input type="checkbox" id="delete-user">
+            </div>
 
-    	<script src="options.js"></script>
-	</body>
+            <div id="delete-public-container">
+                <label for="delete-public">Only delete public keys database</label>
+                <input type="checkbox" id="delete-public">
+            </div>
+        </div>
+
+        <div id="context" class="contain">
+            <h3>Context menu (right click) options:</h3>
+
+            <div id="send-to-popup-container">
+                <label for="send-to-popup">Send encrypted/decrypted message to popup (open the popup to read)</label>
+                <input type="checkbox" id="send-to-popup">
+            </div>
+
+            <div id="copy-text-container">
+                <label for="copy-text">Copy encrypted/decrypted message to clipboard</label>
+                <input type="checkbox" id="copy-text">
+            </div>
+
+            <div id="desktop-notification-container">
+                <label for="desktop-notification">Create a desktop notification of encrypted/decrypted message</label>
+                <input type="checkbox" id="desktop-notification">
+            </div>
+        </div>
+
+        <script src="options.js"></script>
+    </body>
